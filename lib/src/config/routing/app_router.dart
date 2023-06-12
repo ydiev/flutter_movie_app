@@ -1,4 +1,4 @@
-import 'package:eden_movies_app/src/features/movies/presentation/movies_list/ui/movies_list_screen.dart';
+import 'package:eden_movies_app/src/features/movies/feature_movies.dart';
 import 'package:go_router/go_router.dart';
 
 enum AppRoute {

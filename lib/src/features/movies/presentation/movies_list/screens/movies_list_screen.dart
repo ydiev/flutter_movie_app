@@ -2,7 +2,7 @@ import 'package:eden_movies_app/src/core/utils/localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
-import 'carousel_widget.dart';
+import '../widgets/carousel_widget.dart';
 
 class MoviesListScreen extends StatelessWidget {
   const MoviesListScreen({super.key});

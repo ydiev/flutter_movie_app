@@ -1,5 +1,5 @@
-import 'package:eden_movies_app/src/routing/app_router.dart';
 import 'package:flutter/material.dart';
+import 'config/routing/app_router.dart';
 
 class App extends StatelessWidget {
   const App({super.key});

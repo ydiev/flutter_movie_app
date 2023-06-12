@@ -1,24 +1,35 @@
-import 'package:freezed_annotation/freezed_annotation.dart';
+abstract class MovieEntity {
+  const MovieEntity({
+    required this.id,
+    this.title,
+    this.year,
+    this.genres,
+    this.ratings,
+    this.poster,
+    this.contentRating,
+    this.duration,
+    this.releaseDate,
+    this.averageRating,
+    this.originalTittle,
+    this.storyline,
+    this.actors,
+    this.imdbRating,
+    this.posterUrl,
+  });
 
-part 'movie_entity.freezed.dart';
-
-@freezed
-class MovieEntity with _$MovieEntity {
-  const factory MovieEntity({
-    required String id,
-    required String title,
-    required String year,
-    required List<String> genres,
-    required List<int> ratings,
-    required String poster,
-    required String contentRating,
-    required String duration,
-    required String releaseDate,
-    required int averageRating,
-    required String originalTittle,
-    required String storyline,
-    required List<String> actors,
-    required String imdbRating,
-    @JsonKey(name: 'posterurl') required String posterUrl,
-  }) = _MovieEntity;
+  final String id;
+  final String? title;
+  final String? year;
+  final List<String>? genres;
+  final List<int>? ratings;
+  final String? poster;
+  final String? contentRating;
+  final String? duration;
+  final String? releaseDate;
+  final int? averageRating;
+  final String? originalTittle;
+  final String? storyline;
+  final List<String>? actors;
+  final String? imdbRating;
+  final String? posterUrl;
 }

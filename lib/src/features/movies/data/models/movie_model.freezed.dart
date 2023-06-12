@@ -3,7 +3,7 @@
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
-part of 'movie_entity.dart';
+part of 'movie_model.dart';
 
 // **************************************************************************
 // FreezedGenerator
@@ -14,8 +14,12 @@ T _$identity<T>(T value) => value;
 final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
+MovieModel _$MovieModelFromJson(Map<String, dynamic> json) {
+  return _MovieModel.fromJson(json);
+}
+
 /// @nodoc
-mixin _$MovieEntity {
+mixin _$MovieModel {
   String get id => throw _privateConstructorUsedError;
   String get title => throw _privateConstructorUsedError;
   String get year => throw _privateConstructorUsedError;
@@ -33,16 +37,17 @@ mixin _$MovieEntity {
   @JsonKey(name: 'posterurl')
   String get posterUrl => throw _privateConstructorUsedError;
 
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  $MovieEntityCopyWith<MovieEntity> get copyWith =>
+  $MovieModelCopyWith<MovieModel> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $MovieEntityCopyWith<$Res> {
-  factory $MovieEntityCopyWith(
-          MovieEntity value, $Res Function(MovieEntity) then) =
-      _$MovieEntityCopyWithImpl<$Res, MovieEntity>;
+abstract class $MovieModelCopyWith<$Res> {
+  factory $MovieModelCopyWith(
+          MovieModel value, $Res Function(MovieModel) then) =
+      _$MovieModelCopyWithImpl<$Res, MovieModel>;
   @useResult
   $Res call(
       {String id,
@@ -63,9 +68,9 @@ abstract class $MovieEntityCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$MovieEntityCopyWithImpl<$Res, $Val extends MovieEntity>
-    implements $MovieEntityCopyWith<$Res> {
-  _$MovieEntityCopyWithImpl(this._value, this._then);
+class _$MovieModelCopyWithImpl<$Res, $Val extends MovieModel>
+    implements $MovieModelCopyWith<$Res> {
+  _$MovieModelCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
@@ -157,11 +162,11 @@ class _$MovieEntityCopyWithImpl<$Res, $Val extends MovieEntity>
 }
 
 /// @nodoc
-abstract class _$$_MovieEntityCopyWith<$Res>
-    implements $MovieEntityCopyWith<$Res> {
-  factory _$$_MovieEntityCopyWith(
-          _$_MovieEntity value, $Res Function(_$_MovieEntity) then) =
-      __$$_MovieEntityCopyWithImpl<$Res>;
+abstract class _$$_MovieModelCopyWith<$Res>
+    implements $MovieModelCopyWith<$Res> {
+  factory _$$_MovieModelCopyWith(
+          _$_MovieModel value, $Res Function(_$_MovieModel) then) =
+      __$$_MovieModelCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -183,11 +188,11 @@ abstract class _$$_MovieEntityCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_MovieEntityCopyWithImpl<$Res>
-    extends _$MovieEntityCopyWithImpl<$Res, _$_MovieEntity>
-    implements _$$_MovieEntityCopyWith<$Res> {
-  __$$_MovieEntityCopyWithImpl(
-      _$_MovieEntity _value, $Res Function(_$_MovieEntity) _then)
+class __$$_MovieModelCopyWithImpl<$Res>
+    extends _$MovieModelCopyWithImpl<$Res, _$_MovieModel>
+    implements _$$_MovieModelCopyWith<$Res> {
+  __$$_MovieModelCopyWithImpl(
+      _$_MovieModel _value, $Res Function(_$_MovieModel) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -209,7 +214,7 @@ class __$$_MovieEntityCopyWithImpl<$Res>
     Object? imdbRating = null,
     Object? posterUrl = null,
   }) {
-    return _then(_$_MovieEntity(
+    return _then(_$_MovieModel(
       id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
@@ -275,9 +280,9 @@ class __$$_MovieEntityCopyWithImpl<$Res>
 }
 
 /// @nodoc
-
-class _$_MovieEntity implements _MovieEntity {
-  const _$_MovieEntity(
+@JsonSerializable()
+class _$_MovieModel implements _MovieModel {
+  const _$_MovieModel(
       {required this.id,
       required this.title,
       required this.year,
@@ -296,6 +301,9 @@ class _$_MovieEntity implements _MovieEntity {
       : _genres = genres,
         _ratings = ratings,
         _actors = actors;
+
+  factory _$_MovieModel.fromJson(Map<String, dynamic> json) =>
+      _$$_MovieModelFromJson(json);
 
   @override
   final String id;
@@ -349,14 +357,14 @@ class _$_MovieEntity implements _MovieEntity {
 
   @override
   String toString() {
-    return 'MovieEntity(id: $id, title: $title, year: $year, genres: $genres, ratings: $ratings, poster: $poster, contentRating: $contentRating, duration: $duration, releaseDate: $releaseDate, averageRating: $averageRating, originalTittle: $originalTittle, storyline: $storyline, actors: $actors, imdbRating: $imdbRating, posterUrl: $posterUrl)';
+    return 'MovieModel(id: $id, title: $title, year: $year, genres: $genres, ratings: $ratings, poster: $poster, contentRating: $contentRating, duration: $duration, releaseDate: $releaseDate, averageRating: $averageRating, originalTittle: $originalTittle, storyline: $storyline, actors: $actors, imdbRating: $imdbRating, posterUrl: $posterUrl)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_MovieEntity &&
+            other is _$_MovieModel &&
             (identical(other.id, id) || other.id == id) &&
             (identical(other.title, title) || other.title == title) &&
             (identical(other.year, year) || other.year == year) &&
@@ -382,6 +390,7 @@ class _$_MovieEntity implements _MovieEntity {
                 other.posterUrl == posterUrl));
   }
 
+  @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(
       runtimeType,
@@ -404,12 +413,19 @@ class _$_MovieEntity implements _MovieEntity {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_MovieEntityCopyWith<_$_MovieEntity> get copyWith =>
-      __$$_MovieEntityCopyWithImpl<_$_MovieEntity>(this, _$identity);
+  _$$_MovieModelCopyWith<_$_MovieModel> get copyWith =>
+      __$$_MovieModelCopyWithImpl<_$_MovieModel>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$_MovieModelToJson(
+      this,
+    );
+  }
 }
 
-abstract class _MovieEntity implements MovieEntity {
-  const factory _MovieEntity(
+abstract class _MovieModel implements MovieModel {
+  const factory _MovieModel(
           {required final String id,
           required final String title,
           required final String year,
@@ -425,7 +441,10 @@ abstract class _MovieEntity implements MovieEntity {
           required final List<String> actors,
           required final String imdbRating,
           @JsonKey(name: 'posterurl') required final String posterUrl}) =
-      _$_MovieEntity;
+      _$_MovieModel;
+
+  factory _MovieModel.fromJson(Map<String, dynamic> json) =
+      _$_MovieModel.fromJson;
 
   @override
   String get id;
@@ -460,6 +479,6 @@ abstract class _MovieEntity implements MovieEntity {
   String get posterUrl;
   @override
   @JsonKey(ignore: true)
-  _$$_MovieEntityCopyWith<_$_MovieEntity> get copyWith =>
+  _$$_MovieModelCopyWith<_$_MovieModel> get copyWith =>
       throw _privateConstructorUsedError;
 }

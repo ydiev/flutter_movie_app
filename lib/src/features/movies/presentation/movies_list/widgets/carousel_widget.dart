@@ -1,3 +1,4 @@
+import 'package:eden_movies_app/src/features/movies/domain/entities/movie_entity.dart';
 import 'package:flutter/material.dart';
 
 enum CarouselSize {
@@ -12,10 +13,12 @@ enum CarouselSize {
 class CarouselWidget extends StatelessWidget {
   const CarouselWidget({
     super.key,
+    required this.movies,
     this.title,
     this.size = CarouselSize.big,
   });
 
+  final List<MovieEntity> movies;
   final String? title;
   final CarouselSize size;
 
@@ -41,9 +44,9 @@ class CarouselWidget extends StatelessWidget {
               child: ListView.separated(
                 separatorBuilder: (context, _) => const SizedBox(width: 6),
                 scrollDirection: Axis.horizontal,
-                itemCount: 8,
+                itemCount: movies.length,
                 itemBuilder: (context, index) => Container(
-                  margin: _getMargin(index, 8),
+                  margin: _getMargin(index, movies.length),
                   child: const _CarouselItem(),
                 ),
               ),

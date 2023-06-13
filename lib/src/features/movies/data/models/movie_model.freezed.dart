@@ -21,21 +21,22 @@ MovieModel _$MovieModelFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$MovieModel {
   String get id => throw _privateConstructorUsedError;
-  String get title => throw _privateConstructorUsedError;
-  String get year => throw _privateConstructorUsedError;
-  List<String> get genres => throw _privateConstructorUsedError;
-  List<int> get ratings => throw _privateConstructorUsedError;
-  String get poster => throw _privateConstructorUsedError;
-  String get contentRating => throw _privateConstructorUsedError;
-  String get duration => throw _privateConstructorUsedError;
-  String get releaseDate => throw _privateConstructorUsedError;
-  int get averageRating => throw _privateConstructorUsedError;
-  String get originalTittle => throw _privateConstructorUsedError;
-  String get storyline => throw _privateConstructorUsedError;
-  List<String> get actors => throw _privateConstructorUsedError;
-  String get imdbRating => throw _privateConstructorUsedError;
+  String? get title => throw _privateConstructorUsedError;
+  String? get year => throw _privateConstructorUsedError;
+  List<String>? get genres => throw _privateConstructorUsedError;
+  List<int>? get ratings => throw _privateConstructorUsedError;
+  String? get poster => throw _privateConstructorUsedError;
+  String? get contentRating => throw _privateConstructorUsedError;
+  String? get duration => throw _privateConstructorUsedError;
+  String? get releaseDate => throw _privateConstructorUsedError;
+  int? get averageRating => throw _privateConstructorUsedError;
+  String? get originalTittle => throw _privateConstructorUsedError;
+  String? get storyline => throw _privateConstructorUsedError;
+  List<String>? get actors => throw _privateConstructorUsedError;
+  @JsonKey(fromJson: _imdbRatingFromJsonConverter)
+  double? get imdbRating => throw _privateConstructorUsedError;
   @JsonKey(name: 'posterurl')
-  String get posterUrl => throw _privateConstructorUsedError;
+  String? get posterUrl => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -51,20 +52,20 @@ abstract class $MovieModelCopyWith<$Res> {
   @useResult
   $Res call(
       {String id,
-      String title,
-      String year,
-      List<String> genres,
-      List<int> ratings,
-      String poster,
-      String contentRating,
-      String duration,
-      String releaseDate,
-      int averageRating,
-      String originalTittle,
-      String storyline,
-      List<String> actors,
-      String imdbRating,
-      @JsonKey(name: 'posterurl') String posterUrl});
+      String? title,
+      String? year,
+      List<String>? genres,
+      List<int>? ratings,
+      String? poster,
+      String? contentRating,
+      String? duration,
+      String? releaseDate,
+      int? averageRating,
+      String? originalTittle,
+      String? storyline,
+      List<String>? actors,
+      @JsonKey(fromJson: _imdbRatingFromJsonConverter) double? imdbRating,
+      @JsonKey(name: 'posterurl') String? posterUrl});
 }
 
 /// @nodoc
@@ -81,82 +82,82 @@ class _$MovieModelCopyWithImpl<$Res, $Val extends MovieModel>
   @override
   $Res call({
     Object? id = null,
-    Object? title = null,
-    Object? year = null,
-    Object? genres = null,
-    Object? ratings = null,
-    Object? poster = null,
-    Object? contentRating = null,
-    Object? duration = null,
-    Object? releaseDate = null,
-    Object? averageRating = null,
-    Object? originalTittle = null,
-    Object? storyline = null,
-    Object? actors = null,
-    Object? imdbRating = null,
-    Object? posterUrl = null,
+    Object? title = freezed,
+    Object? year = freezed,
+    Object? genres = freezed,
+    Object? ratings = freezed,
+    Object? poster = freezed,
+    Object? contentRating = freezed,
+    Object? duration = freezed,
+    Object? releaseDate = freezed,
+    Object? averageRating = freezed,
+    Object? originalTittle = freezed,
+    Object? storyline = freezed,
+    Object? actors = freezed,
+    Object? imdbRating = freezed,
+    Object? posterUrl = freezed,
   }) {
     return _then(_value.copyWith(
       id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as String,
-      title: null == title
+      title: freezed == title
           ? _value.title
           : title // ignore: cast_nullable_to_non_nullable
-              as String,
-      year: null == year
+              as String?,
+      year: freezed == year
           ? _value.year
           : year // ignore: cast_nullable_to_non_nullable
-              as String,
-      genres: null == genres
+              as String?,
+      genres: freezed == genres
           ? _value.genres
           : genres // ignore: cast_nullable_to_non_nullable
-              as List<String>,
-      ratings: null == ratings
+              as List<String>?,
+      ratings: freezed == ratings
           ? _value.ratings
           : ratings // ignore: cast_nullable_to_non_nullable
-              as List<int>,
-      poster: null == poster
+              as List<int>?,
+      poster: freezed == poster
           ? _value.poster
           : poster // ignore: cast_nullable_to_non_nullable
-              as String,
-      contentRating: null == contentRating
+              as String?,
+      contentRating: freezed == contentRating
           ? _value.contentRating
           : contentRating // ignore: cast_nullable_to_non_nullable
-              as String,
-      duration: null == duration
+              as String?,
+      duration: freezed == duration
           ? _value.duration
           : duration // ignore: cast_nullable_to_non_nullable
-              as String,
-      releaseDate: null == releaseDate
+              as String?,
+      releaseDate: freezed == releaseDate
           ? _value.releaseDate
           : releaseDate // ignore: cast_nullable_to_non_nullable
-              as String,
-      averageRating: null == averageRating
+              as String?,
+      averageRating: freezed == averageRating
           ? _value.averageRating
           : averageRating // ignore: cast_nullable_to_non_nullable
-              as int,
-      originalTittle: null == originalTittle
+              as int?,
+      originalTittle: freezed == originalTittle
           ? _value.originalTittle
           : originalTittle // ignore: cast_nullable_to_non_nullable
-              as String,
-      storyline: null == storyline
+              as String?,
+      storyline: freezed == storyline
           ? _value.storyline
           : storyline // ignore: cast_nullable_to_non_nullable
-              as String,
-      actors: null == actors
+              as String?,
+      actors: freezed == actors
           ? _value.actors
           : actors // ignore: cast_nullable_to_non_nullable
-              as List<String>,
-      imdbRating: null == imdbRating
+              as List<String>?,
+      imdbRating: freezed == imdbRating
           ? _value.imdbRating
           : imdbRating // ignore: cast_nullable_to_non_nullable
-              as String,
-      posterUrl: null == posterUrl
+              as double?,
+      posterUrl: freezed == posterUrl
           ? _value.posterUrl
           : posterUrl // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
     ) as $Val);
   }
 }
@@ -171,20 +172,20 @@ abstract class _$$_MovieModelCopyWith<$Res>
   @useResult
   $Res call(
       {String id,
-      String title,
-      String year,
-      List<String> genres,
-      List<int> ratings,
-      String poster,
-      String contentRating,
-      String duration,
-      String releaseDate,
-      int averageRating,
-      String originalTittle,
-      String storyline,
-      List<String> actors,
-      String imdbRating,
-      @JsonKey(name: 'posterurl') String posterUrl});
+      String? title,
+      String? year,
+      List<String>? genres,
+      List<int>? ratings,
+      String? poster,
+      String? contentRating,
+      String? duration,
+      String? releaseDate,
+      int? averageRating,
+      String? originalTittle,
+      String? storyline,
+      List<String>? actors,
+      @JsonKey(fromJson: _imdbRatingFromJsonConverter) double? imdbRating,
+      @JsonKey(name: 'posterurl') String? posterUrl});
 }
 
 /// @nodoc
@@ -199,82 +200,82 @@ class __$$_MovieModelCopyWithImpl<$Res>
   @override
   $Res call({
     Object? id = null,
-    Object? title = null,
-    Object? year = null,
-    Object? genres = null,
-    Object? ratings = null,
-    Object? poster = null,
-    Object? contentRating = null,
-    Object? duration = null,
-    Object? releaseDate = null,
-    Object? averageRating = null,
-    Object? originalTittle = null,
-    Object? storyline = null,
-    Object? actors = null,
-    Object? imdbRating = null,
-    Object? posterUrl = null,
+    Object? title = freezed,
+    Object? year = freezed,
+    Object? genres = freezed,
+    Object? ratings = freezed,
+    Object? poster = freezed,
+    Object? contentRating = freezed,
+    Object? duration = freezed,
+    Object? releaseDate = freezed,
+    Object? averageRating = freezed,
+    Object? originalTittle = freezed,
+    Object? storyline = freezed,
+    Object? actors = freezed,
+    Object? imdbRating = freezed,
+    Object? posterUrl = freezed,
   }) {
     return _then(_$_MovieModel(
       id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as String,
-      title: null == title
+      title: freezed == title
           ? _value.title
           : title // ignore: cast_nullable_to_non_nullable
-              as String,
-      year: null == year
+              as String?,
+      year: freezed == year
           ? _value.year
           : year // ignore: cast_nullable_to_non_nullable
-              as String,
-      genres: null == genres
+              as String?,
+      genres: freezed == genres
           ? _value._genres
           : genres // ignore: cast_nullable_to_non_nullable
-              as List<String>,
-      ratings: null == ratings
+              as List<String>?,
+      ratings: freezed == ratings
           ? _value._ratings
           : ratings // ignore: cast_nullable_to_non_nullable
-              as List<int>,
-      poster: null == poster
+              as List<int>?,
+      poster: freezed == poster
           ? _value.poster
           : poster // ignore: cast_nullable_to_non_nullable
-              as String,
-      contentRating: null == contentRating
+              as String?,
+      contentRating: freezed == contentRating
           ? _value.contentRating
           : contentRating // ignore: cast_nullable_to_non_nullable
-              as String,
-      duration: null == duration
+              as String?,
+      duration: freezed == duration
           ? _value.duration
           : duration // ignore: cast_nullable_to_non_nullable
-              as String,
-      releaseDate: null == releaseDate
+              as String?,
+      releaseDate: freezed == releaseDate
           ? _value.releaseDate
           : releaseDate // ignore: cast_nullable_to_non_nullable
-              as String,
-      averageRating: null == averageRating
+              as String?,
+      averageRating: freezed == averageRating
           ? _value.averageRating
           : averageRating // ignore: cast_nullable_to_non_nullable
-              as int,
-      originalTittle: null == originalTittle
+              as int?,
+      originalTittle: freezed == originalTittle
           ? _value.originalTittle
           : originalTittle // ignore: cast_nullable_to_non_nullable
-              as String,
-      storyline: null == storyline
+              as String?,
+      storyline: freezed == storyline
           ? _value.storyline
           : storyline // ignore: cast_nullable_to_non_nullable
-              as String,
-      actors: null == actors
+              as String?,
+      actors: freezed == actors
           ? _value._actors
           : actors // ignore: cast_nullable_to_non_nullable
-              as List<String>,
-      imdbRating: null == imdbRating
+              as List<String>?,
+      imdbRating: freezed == imdbRating
           ? _value.imdbRating
           : imdbRating // ignore: cast_nullable_to_non_nullable
-              as String,
-      posterUrl: null == posterUrl
+              as double?,
+      posterUrl: freezed == posterUrl
           ? _value.posterUrl
           : posterUrl // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
     ));
   }
 }
@@ -284,20 +285,20 @@ class __$$_MovieModelCopyWithImpl<$Res>
 class _$_MovieModel implements _MovieModel {
   const _$_MovieModel(
       {required this.id,
-      required this.title,
-      required this.year,
-      required final List<String> genres,
-      required final List<int> ratings,
-      required this.poster,
-      required this.contentRating,
-      required this.duration,
-      required this.releaseDate,
-      required this.averageRating,
-      required this.originalTittle,
-      required this.storyline,
-      required final List<String> actors,
-      required this.imdbRating,
-      @JsonKey(name: 'posterurl') required this.posterUrl})
+      this.title,
+      this.year,
+      final List<String>? genres,
+      final List<int>? ratings,
+      this.poster,
+      this.contentRating,
+      this.duration,
+      this.releaseDate,
+      this.averageRating,
+      this.originalTittle,
+      this.storyline,
+      final List<String>? actors,
+      @JsonKey(fromJson: _imdbRatingFromJsonConverter) this.imdbRating,
+      @JsonKey(name: 'posterurl') this.posterUrl})
       : _genres = genres,
         _ratings = ratings,
         _actors = actors;
@@ -308,52 +309,59 @@ class _$_MovieModel implements _MovieModel {
   @override
   final String id;
   @override
-  final String title;
+  final String? title;
   @override
-  final String year;
-  final List<String> _genres;
+  final String? year;
+  final List<String>? _genres;
   @override
-  List<String> get genres {
+  List<String>? get genres {
+    final value = _genres;
+    if (value == null) return null;
     if (_genres is EqualUnmodifiableListView) return _genres;
     // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_genres);
+    return EqualUnmodifiableListView(value);
   }
 
-  final List<int> _ratings;
+  final List<int>? _ratings;
   @override
-  List<int> get ratings {
+  List<int>? get ratings {
+    final value = _ratings;
+    if (value == null) return null;
     if (_ratings is EqualUnmodifiableListView) return _ratings;
     // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_ratings);
+    return EqualUnmodifiableListView(value);
   }
 
   @override
-  final String poster;
+  final String? poster;
   @override
-  final String contentRating;
+  final String? contentRating;
   @override
-  final String duration;
+  final String? duration;
   @override
-  final String releaseDate;
+  final String? releaseDate;
   @override
-  final int averageRating;
+  final int? averageRating;
   @override
-  final String originalTittle;
+  final String? originalTittle;
   @override
-  final String storyline;
-  final List<String> _actors;
+  final String? storyline;
+  final List<String>? _actors;
   @override
-  List<String> get actors {
+  List<String>? get actors {
+    final value = _actors;
+    if (value == null) return null;
     if (_actors is EqualUnmodifiableListView) return _actors;
     // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_actors);
+    return EqualUnmodifiableListView(value);
   }
 
   @override
-  final String imdbRating;
+  @JsonKey(fromJson: _imdbRatingFromJsonConverter)
+  final double? imdbRating;
   @override
   @JsonKey(name: 'posterurl')
-  final String posterUrl;
+  final String? posterUrl;
 
   @override
   String toString() {
@@ -426,22 +434,21 @@ class _$_MovieModel implements _MovieModel {
 
 abstract class _MovieModel implements MovieModel {
   const factory _MovieModel(
-          {required final String id,
-          required final String title,
-          required final String year,
-          required final List<String> genres,
-          required final List<int> ratings,
-          required final String poster,
-          required final String contentRating,
-          required final String duration,
-          required final String releaseDate,
-          required final int averageRating,
-          required final String originalTittle,
-          required final String storyline,
-          required final List<String> actors,
-          required final String imdbRating,
-          @JsonKey(name: 'posterurl') required final String posterUrl}) =
-      _$_MovieModel;
+      {required final String id,
+      final String? title,
+      final String? year,
+      final List<String>? genres,
+      final List<int>? ratings,
+      final String? poster,
+      final String? contentRating,
+      final String? duration,
+      final String? releaseDate,
+      final int? averageRating,
+      final String? originalTittle,
+      final String? storyline,
+      final List<String>? actors,
+      @JsonKey(fromJson: _imdbRatingFromJsonConverter) final double? imdbRating,
+      @JsonKey(name: 'posterurl') final String? posterUrl}) = _$_MovieModel;
 
   factory _MovieModel.fromJson(Map<String, dynamic> json) =
       _$_MovieModel.fromJson;
@@ -449,34 +456,35 @@ abstract class _MovieModel implements MovieModel {
   @override
   String get id;
   @override
-  String get title;
+  String? get title;
   @override
-  String get year;
+  String? get year;
   @override
-  List<String> get genres;
+  List<String>? get genres;
   @override
-  List<int> get ratings;
+  List<int>? get ratings;
   @override
-  String get poster;
+  String? get poster;
   @override
-  String get contentRating;
+  String? get contentRating;
   @override
-  String get duration;
+  String? get duration;
   @override
-  String get releaseDate;
+  String? get releaseDate;
   @override
-  int get averageRating;
+  int? get averageRating;
   @override
-  String get originalTittle;
+  String? get originalTittle;
   @override
-  String get storyline;
+  String? get storyline;
   @override
-  List<String> get actors;
+  List<String>? get actors;
   @override
-  String get imdbRating;
+  @JsonKey(fromJson: _imdbRatingFromJsonConverter)
+  double? get imdbRating;
   @override
   @JsonKey(name: 'posterurl')
-  String get posterUrl;
+  String? get posterUrl;
   @override
   @JsonKey(ignore: true)
   _$$_MovieModelCopyWith<_$_MovieModel> get copyWith =>

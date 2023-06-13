@@ -30,6 +30,6 @@ abstract class MovieEntity {
   final String? originalTittle;
   final String? storyline;
   final List<String>? actors;
-  final String? imdbRating;
+  final double? imdbRating;
   final String? posterUrl;
 }

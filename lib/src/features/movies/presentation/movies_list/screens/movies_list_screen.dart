@@ -1,8 +1,10 @@
 import 'package:eden_movies_app/src/core/utils/localization.dart';
+import 'package:eden_movies_app/src/dependency_register.dart';
+import 'package:eden_movies_app/src/features/movies/presentation/movies_list/bloc/movies_list_cubit.dart';
+import 'package:eden_movies_app/src/features/movies/presentation/movies_list/widgets/carousel_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-
-import '../widgets/carousel_widget.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class MoviesListScreen extends StatelessWidget {
   const MoviesListScreen({super.key});
@@ -35,20 +37,33 @@ class MoviesListScreen extends StatelessWidget {
         body: AnnotatedRegion<SystemUiOverlayStyle>(
           value: SystemUiOverlayStyle.light,
           child: SafeArea(
-            child: ListView(
-              children: const [
-                CarouselWidget(),
-                CarouselWidget(
-                  // TODO(Diev): Replace with dynamic data
-                  title: 'Crime',
-                  size: CarouselSize.small,
+            child: BlocProvider<MoviesListCubit>(
+              create: (context) => getIt()..fetchMovies(),
+              child: BlocBuilder<MoviesListCubit, MoviesListState>(
+                builder: (context, state) => state.when(
+                  initial: () => const SizedBox(),
+                  loading: () => const CircularProgressIndicator(),
+                  loaded: (movies) => ListView(
+                    children: [
+                      CarouselWidget(movies: movies),
+                      // CarouselWidget(
+                      //   // TODO(Diev): Replace with dynamic data
+                      //   title: 'Crime',
+                      //   size: CarouselSize.small,
+                      // ),
+                      // CarouselWidget(
+                      //   // TODO(Diev): Replace with dynamic data
+                      //   title: 'Drama',
+                      //   size: CarouselSize.small,
+                      // ),
+                    ],
+                  ),
+                  error: (error) => Center(
+                    // TODO(Diev): Improve
+                    child: Text(error.message ?? 'Default error'),
+                  ),
                 ),
-                CarouselWidget(
-                  // TODO(Diev): Replace with dynamic data
-                  title: 'Drama',
-                  size: CarouselSize.small,
-                ),
-              ],
+              ),
             ),
           ),
         ),

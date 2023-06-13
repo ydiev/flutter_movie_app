@@ -13,7 +13,7 @@ class _MoviesApiService implements MoviesApiService {
     this._dio, {
     this.baseUrl,
   }) {
-    baseUrl ??= 'https://google.com';
+    baseUrl ??= 'https://raw.githubusercontent.com/';
   }
 
   final Dio _dio;
@@ -34,7 +34,7 @@ class _MoviesApiService implements MoviesApiService {
     )
             .compose(
               _dio.options,
-              'FEND16/movie-json-data/master/json/movies-coming-soon.json',
+              '/FEND16/movie-json-data/master/json/movies-coming-soon.json',
               queryParameters: queryParameters,
               data: _data,
             )

@@ -1,8 +1,10 @@
 import 'package:eden_movies_app/src/app.dart';
+import 'package:eden_movies_app/src/dependency_register.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
 void main() {
+  registerDependencies();
   runApp(const App());
 }
 

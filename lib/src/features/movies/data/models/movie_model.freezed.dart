@@ -21,7 +21,7 @@ MovieModel _$MovieModelFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$MovieModel {
   String get id => throw _privateConstructorUsedError;
-  String? get title => throw _privateConstructorUsedError;
+  String get title => throw _privateConstructorUsedError;
   String? get year => throw _privateConstructorUsedError;
   List<String>? get genres => throw _privateConstructorUsedError;
   List<int>? get ratings => throw _privateConstructorUsedError;
@@ -52,7 +52,7 @@ abstract class $MovieModelCopyWith<$Res> {
   @useResult
   $Res call(
       {String id,
-      String? title,
+      String title,
       String? year,
       List<String>? genres,
       List<int>? ratings,
@@ -82,7 +82,7 @@ class _$MovieModelCopyWithImpl<$Res, $Val extends MovieModel>
   @override
   $Res call({
     Object? id = null,
-    Object? title = freezed,
+    Object? title = null,
     Object? year = freezed,
     Object? genres = freezed,
     Object? ratings = freezed,
@@ -102,10 +102,10 @@ class _$MovieModelCopyWithImpl<$Res, $Val extends MovieModel>
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as String,
-      title: freezed == title
+      title: null == title
           ? _value.title
           : title // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as String,
       year: freezed == year
           ? _value.year
           : year // ignore: cast_nullable_to_non_nullable
@@ -172,7 +172,7 @@ abstract class _$$_MovieModelCopyWith<$Res>
   @useResult
   $Res call(
       {String id,
-      String? title,
+      String title,
       String? year,
       List<String>? genres,
       List<int>? ratings,
@@ -200,7 +200,7 @@ class __$$_MovieModelCopyWithImpl<$Res>
   @override
   $Res call({
     Object? id = null,
-    Object? title = freezed,
+    Object? title = null,
     Object? year = freezed,
     Object? genres = freezed,
     Object? ratings = freezed,
@@ -220,10 +220,10 @@ class __$$_MovieModelCopyWithImpl<$Res>
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as String,
-      title: freezed == title
+      title: null == title
           ? _value.title
           : title // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as String,
       year: freezed == year
           ? _value.year
           : year // ignore: cast_nullable_to_non_nullable
@@ -285,7 +285,7 @@ class __$$_MovieModelCopyWithImpl<$Res>
 class _$_MovieModel implements _MovieModel {
   const _$_MovieModel(
       {required this.id,
-      this.title,
+      required this.title,
       this.year,
       final List<String>? genres,
       final List<int>? ratings,
@@ -309,7 +309,7 @@ class _$_MovieModel implements _MovieModel {
   @override
   final String id;
   @override
-  final String? title;
+  final String title;
   @override
   final String? year;
   final List<String>? _genres;
@@ -435,7 +435,7 @@ class _$_MovieModel implements _MovieModel {
 abstract class _MovieModel implements MovieModel {
   const factory _MovieModel(
       {required final String id,
-      final String? title,
+      required final String title,
       final String? year,
       final List<String>? genres,
       final List<int>? ratings,
@@ -456,7 +456,7 @@ abstract class _MovieModel implements MovieModel {
   @override
   String get id;
   @override
-  String? get title;
+  String get title;
   @override
   String? get year;
   @override

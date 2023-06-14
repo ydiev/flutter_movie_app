@@ -14,6 +14,8 @@ class MoviesListCubit extends Cubit<MoviesListState> {
       : super(const MoviesListState.initial());
   final GetMoviesUseCase _getMoviesUseCase;
 
+  // TODO(Diev): Add an use case that will precache the images
+
   void fetchMovies() async {
     final dataState = await _getMoviesUseCase.execute();
     if (dataState is DataSuccess && dataState.data!.isNotEmpty) {

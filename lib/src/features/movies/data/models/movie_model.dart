@@ -9,7 +9,7 @@ part 'movie_model.g.dart';
 class MovieModel extends MovieEntity with _$MovieModel {
   const factory MovieModel({
     required String id,
-    String? title,
+    required String title,
     String? year,
     List<String>? genres,
     List<int>? ratings,

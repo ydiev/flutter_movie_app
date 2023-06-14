@@ -9,7 +9,7 @@ part of 'movie_model.dart';
 _$_MovieModel _$$_MovieModelFromJson(Map<String, dynamic> json) =>
     _$_MovieModel(
       id: json['id'] as String,
-      title: json['title'] as String?,
+      title: json['title'] as String,
       year: json['year'] as String?,
       genres:
           (json['genres'] as List<dynamic>?)?.map((e) => e as String).toList(),

@@ -1,7 +1,7 @@
 abstract class MovieEntity {
   const MovieEntity({
     required this.id,
-    this.title,
+    required this.title,
     this.year,
     this.genres,
     this.ratings,
@@ -18,7 +18,7 @@ abstract class MovieEntity {
   });
 
   final String id;
-  final String? title;
+  final String title;
   final String? year;
   final List<String>? genres;
   final List<int>? ratings;

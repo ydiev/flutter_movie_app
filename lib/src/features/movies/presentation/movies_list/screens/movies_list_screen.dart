@@ -45,7 +45,9 @@ class MoviesListScreen extends StatelessWidget {
                   loading: () => const CircularProgressIndicator(),
                   loaded: (movies) => ListView(
                     children: [
-                      CarouselWidget(movies: movies),
+                      CarouselWidget(
+                        movies: movies,
+                      ),
                       // CarouselWidget(
                       //   // TODO(Diev): Replace with dynamic data
                       //   title: 'Crime',

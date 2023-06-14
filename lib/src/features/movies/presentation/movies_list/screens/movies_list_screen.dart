@@ -1,7 +1,9 @@
+import 'package:eden_movies_app/src/config/widgets/error_message_widget.dart';
 import 'package:eden_movies_app/src/core/utils/localization.dart';
+import 'package:eden_movies_app/src/config/widgets/app_navigation_bar.dart';
 import 'package:eden_movies_app/src/dependency_register.dart';
 import 'package:eden_movies_app/src/features/movies/presentation/movies_list/bloc/movies_list_cubit.dart';
-import 'package:eden_movies_app/src/features/movies/presentation/movies_list/widgets/carousel_widget.dart';
+import 'package:eden_movies_app/src/features/movies/presentation/movies_list/widgets/movie_collection_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -11,29 +13,7 @@ class MoviesListScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) => Scaffold(
-        bottomNavigationBar: NavigationBar(
-          backgroundColor: Colors.black,
-          onDestinationSelected: (int index) {
-            // TODO(Diev): Navigate when the other pages are available
-            throw UnimplementedError();
-          },
-          selectedIndex: 1,
-          destinations: const [
-            NavigationDestination(
-              icon: Icon(Icons.bookmark_border),
-              label: Localization.watchlistMenuItemText,
-            ),
-            NavigationDestination(
-              icon: Icon(Icons.home),
-              label: Localization.homeMenuItemText,
-            ),
-            NavigationDestination(
-              selectedIcon: Icon(Icons.bookmark),
-              icon: Icon(Icons.person_2_outlined),
-              label: Localization.profileMenuItemText,
-            ),
-          ],
-        ),
+        bottomNavigationBar: appNavigationBar,
         body: AnnotatedRegion<SystemUiOverlayStyle>(
           value: SystemUiOverlayStyle.light,
           child: SafeArea(
@@ -45,23 +25,20 @@ class MoviesListScreen extends StatelessWidget {
                   loading: () => const CircularProgressIndicator(),
                   loaded: (movies, moviesByGenre) => ListView(
                     children: [
-                      CarouselWidget(
+                      MovieCollectionWidget(
                         movies: movies,
+                        isMain: true,
                       ),
                       ...moviesByGenre.entries.map(
-                        (entry) => CarouselWidget(
+                        (entry) => MovieCollectionWidget(
                           title: entry.key,
                           movies: entry.value,
-                          size: CarouselSize.small,
                         ),
                       ),
                     ],
                   ),
-                  error: (error) => Center(
-                    // TODO(Diev): Add more user friendly error messages
-                    child: Text(
-                      error.message ?? Localization.defaultErrorMessage,
-                    ),
+                  error: (error) => ErrorMessageWidget(
+                    error.message ?? Localization.defaultErrorMessage,
                   ),
                 ),
               ),

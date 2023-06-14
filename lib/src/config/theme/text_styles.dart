@@ -11,4 +11,9 @@ class AppTextStyles {
     fontStyle: FontStyle.normal,
     color: Colors.white,
   );
+  static const errorMessageTextStyle = TextStyle(
+    fontSize: 18,
+    fontStyle: FontStyle.normal,
+    color: Colors.red,
+  );
 }

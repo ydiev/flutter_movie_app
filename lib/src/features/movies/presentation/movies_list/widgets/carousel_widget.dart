@@ -21,78 +21,58 @@ class CarouselWidget extends StatelessWidget {
     super.key,
     required this.movies,
     this.size = CarouselSize.big,
-    this.title,
   });
 
   final List<MovieEntity> movies;
   final CarouselSize size;
-  final String? title;
 
   @override
-  Widget build(BuildContext context) => Padding(
-        padding: const EdgeInsets.symmetric(vertical: AppSpacing.spacing12),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            if (title != null)
-              Padding(
-                padding: const EdgeInsets.symmetric(
-                  horizontal: AppSpacing.spacing16,
-                  vertical: AppSpacing.spacing4,
-                ),
-                child: Text(
-                  title!,
-                  style: AppTextStyles.movieSetTitleTextStyle,
-                ),
-              ),
-            SizedBox(
-              height: size.height,
-              child: ListView.separated(
-                separatorBuilder: (context, _) =>
-                    const SizedBox(width: AppSpacing.spacing8),
-                scrollDirection: Axis.horizontal,
-                itemCount: movies.length,
-                itemBuilder: (context, index) {
-                  final movie = movies[index];
-                  return Container(
-                    margin: _getMargin(index, movies.length),
-                    child: _CarouselItem(
-                      title: movie.title,
-                      posterUrl: movie.posterUrl,
-                      size: size,
-                    ),
-                  );
-                },
-              ),
-            ),
-          ],
-        ),
-      );
-
-  EdgeInsets _getMargin(int index, int lastIndex) {
-    if (index == 0) {
-      return const EdgeInsets.only(left: AppSpacing.spacing8);
-    } else if (index == lastIndex - 1) {
-      return const EdgeInsets.only(right: AppSpacing.spacing8);
-    } else {
-      return EdgeInsets.zero;
-    }
+  Widget build(BuildContext context) {
+    final itemsCount = movies.length;
+    return SizedBox(
+      height: size.height,
+      child: ListView.separated(
+        separatorBuilder: (context, _) =>
+            const SizedBox(width: AppSpacing.spacing8),
+        scrollDirection: Axis.horizontal,
+        itemCount: itemsCount,
+        itemBuilder: (context, index) {
+          final movie = movies[index];
+          return _Item(
+            title: movie.title,
+            posterUrl: movie.posterUrl,
+            size: size,
+            isFirst: index == 0,
+            isLast: index == itemsCount,
+          );
+        },
+      ),
+    );
   }
 }
 
-class _CarouselItem extends StatelessWidget {
-  const _CarouselItem({
+class _Item extends StatelessWidget {
+  const _Item({
     required this.title,
     this.posterUrl,
     this.size = CarouselSize.big,
+    this.isFirst = false,
+    this.isLast = false,
   });
 
   final String title;
   final String? posterUrl;
   final CarouselSize size;
+  final bool isFirst;
+  final bool isLast;
 
   @override
   Widget build(BuildContext context) => Container(
+        margin: [
+          if (isFirst) const EdgeInsets.only(left: AppSpacing.spacing8),
+          if (isLast) const EdgeInsets.only(right: AppSpacing.spacing8),
+          EdgeInsets.zero
+        ].first,
         height: size.height,
         width: size.height / _imageRatio,
         decoration: BoxDecoration(
@@ -104,8 +84,7 @@ class _CarouselItem extends StatelessWidget {
           child: Image.network(
             posterUrl ?? '',
             fit: BoxFit.cover,
-            errorBuilder: (context, error, _) =>
-                _NoImageMovieItem(title: title),
+            errorBuilder: (context, error, _) => _NoImageItem(title: title),
             loadingBuilder: (context, child, progress) =>
                 progress == null ? child : const LinearProgressIndicator(),
             semanticLabel: title,
@@ -114,8 +93,8 @@ class _CarouselItem extends StatelessWidget {
       );
 }
 
-class _NoImageMovieItem extends StatelessWidget {
-  const _NoImageMovieItem({required this.title});
+class _NoImageItem extends StatelessWidget {
+  const _NoImageItem({required this.title});
 
   final String title;
 

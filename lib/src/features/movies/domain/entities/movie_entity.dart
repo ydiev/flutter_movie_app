@@ -1,4 +1,6 @@
-abstract class MovieEntity {
+import 'package:equatable/equatable.dart';
+
+abstract class MovieEntity extends Equatable {
   const MovieEntity({
     required this.id,
     required this.title,
@@ -32,4 +34,12 @@ abstract class MovieEntity {
   final List<String>? actors;
   final double? imdbRating;
   final String? posterUrl;
+
+  @override
+  List<Object?> get props => [
+        title,
+        year,
+        posterUrl,
+        originalTittle,
+      ];
 }

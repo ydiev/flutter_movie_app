@@ -43,26 +43,25 @@ class MoviesListScreen extends StatelessWidget {
                 builder: (context, state) => state.when(
                   initial: () => const SizedBox(),
                   loading: () => const CircularProgressIndicator(),
-                  loaded: (movies) => ListView(
+                  loaded: (movies, moviesByGenre) => ListView(
                     children: [
                       CarouselWidget(
                         movies: movies,
                       ),
-                      // CarouselWidget(
-                      //   // TODO(Diev): Replace with dynamic data
-                      //   title: 'Crime',
-                      //   size: CarouselSize.small,
-                      // ),
-                      // CarouselWidget(
-                      //   // TODO(Diev): Replace with dynamic data
-                      //   title: 'Drama',
-                      //   size: CarouselSize.small,
-                      // ),
+                      ...moviesByGenre.entries.map(
+                        (entry) => CarouselWidget(
+                          title: entry.key,
+                          movies: entry.value,
+                          size: CarouselSize.small,
+                        ),
+                      ),
                     ],
                   ),
                   error: (error) => Center(
-                    // TODO(Diev): Improve
-                    child: Text(error.message ?? 'Default error'),
+                    // TODO(Diev): Add more user friendly error messages
+                    child: Text(
+                      error.message ?? Localization.defaultErrorMessage,
+                    ),
                   ),
                 ),
               ),

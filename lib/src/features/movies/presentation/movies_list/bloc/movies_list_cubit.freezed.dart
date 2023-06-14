@@ -20,7 +20,9 @@ mixin _$MoviesListState {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(List<MovieEntity> movies) loaded,
+    required TResult Function(List<MovieEntity> allMovies,
+            Map<String, List<MovieEntity>> byGenres)
+        loaded,
     required TResult Function(DioException exception) error,
   }) =>
       throw _privateConstructorUsedError;
@@ -28,7 +30,9 @@ mixin _$MoviesListState {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(List<MovieEntity> movies)? loaded,
+    TResult? Function(List<MovieEntity> allMovies,
+            Map<String, List<MovieEntity>> byGenres)?
+        loaded,
     TResult? Function(DioException exception)? error,
   }) =>
       throw _privateConstructorUsedError;
@@ -36,7 +40,9 @@ mixin _$MoviesListState {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(List<MovieEntity> movies)? loaded,
+    TResult Function(List<MovieEntity> allMovies,
+            Map<String, List<MovieEntity>> byGenres)?
+        loaded,
     TResult Function(DioException exception)? error,
     required TResult orElse(),
   }) =>
@@ -125,7 +131,9 @@ class _$_Initial implements _Initial {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(List<MovieEntity> movies) loaded,
+    required TResult Function(List<MovieEntity> allMovies,
+            Map<String, List<MovieEntity>> byGenres)
+        loaded,
     required TResult Function(DioException exception) error,
   }) {
     return initial();
@@ -136,7 +144,9 @@ class _$_Initial implements _Initial {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(List<MovieEntity> movies)? loaded,
+    TResult? Function(List<MovieEntity> allMovies,
+            Map<String, List<MovieEntity>> byGenres)?
+        loaded,
     TResult? Function(DioException exception)? error,
   }) {
     return initial?.call();
@@ -147,7 +157,9 @@ class _$_Initial implements _Initial {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(List<MovieEntity> movies)? loaded,
+    TResult Function(List<MovieEntity> allMovies,
+            Map<String, List<MovieEntity>> byGenres)?
+        loaded,
     TResult Function(DioException exception)? error,
     required TResult orElse(),
   }) {
@@ -238,7 +250,9 @@ class _$_Loading implements _Loading {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(List<MovieEntity> movies) loaded,
+    required TResult Function(List<MovieEntity> allMovies,
+            Map<String, List<MovieEntity>> byGenres)
+        loaded,
     required TResult Function(DioException exception) error,
   }) {
     return loading();
@@ -249,7 +263,9 @@ class _$_Loading implements _Loading {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(List<MovieEntity> movies)? loaded,
+    TResult? Function(List<MovieEntity> allMovies,
+            Map<String, List<MovieEntity>> byGenres)?
+        loaded,
     TResult? Function(DioException exception)? error,
   }) {
     return loading?.call();
@@ -260,7 +276,9 @@ class _$_Loading implements _Loading {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(List<MovieEntity> movies)? loaded,
+    TResult Function(List<MovieEntity> allMovies,
+            Map<String, List<MovieEntity>> byGenres)?
+        loaded,
     TResult Function(DioException exception)? error,
     required TResult orElse(),
   }) {
@@ -317,7 +335,8 @@ abstract class _$$_LoadedCopyWith<$Res> {
   factory _$$_LoadedCopyWith(_$_Loaded value, $Res Function(_$_Loaded) then) =
       __$$_LoadedCopyWithImpl<$Res>;
   @useResult
-  $Res call({List<MovieEntity> movies});
+  $Res call(
+      {List<MovieEntity> allMovies, Map<String, List<MovieEntity>> byGenres});
 }
 
 /// @nodoc
@@ -330,13 +349,18 @@ class __$$_LoadedCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? movies = null,
+    Object? allMovies = null,
+    Object? byGenres = null,
   }) {
     return _then(_$_Loaded(
-      null == movies
-          ? _value._movies
-          : movies // ignore: cast_nullable_to_non_nullable
+      null == allMovies
+          ? _value._allMovies
+          : allMovies // ignore: cast_nullable_to_non_nullable
               as List<MovieEntity>,
+      null == byGenres
+          ? _value._byGenres
+          : byGenres // ignore: cast_nullable_to_non_nullable
+              as Map<String, List<MovieEntity>>,
     ));
   }
 }
@@ -344,19 +368,30 @@ class __$$_LoadedCopyWithImpl<$Res>
 /// @nodoc
 
 class _$_Loaded implements _Loaded {
-  const _$_Loaded(final List<MovieEntity> movies) : _movies = movies;
+  const _$_Loaded(final List<MovieEntity> allMovies,
+      final Map<String, List<MovieEntity>> byGenres)
+      : _allMovies = allMovies,
+        _byGenres = byGenres;
 
-  final List<MovieEntity> _movies;
+  final List<MovieEntity> _allMovies;
   @override
-  List<MovieEntity> get movies {
-    if (_movies is EqualUnmodifiableListView) return _movies;
+  List<MovieEntity> get allMovies {
+    if (_allMovies is EqualUnmodifiableListView) return _allMovies;
     // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_movies);
+    return EqualUnmodifiableListView(_allMovies);
+  }
+
+  final Map<String, List<MovieEntity>> _byGenres;
+  @override
+  Map<String, List<MovieEntity>> get byGenres {
+    if (_byGenres is EqualUnmodifiableMapView) return _byGenres;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableMapView(_byGenres);
   }
 
   @override
   String toString() {
-    return 'MoviesListState.loaded(movies: $movies)';
+    return 'MoviesListState.loaded(allMovies: $allMovies, byGenres: $byGenres)';
   }
 
   @override
@@ -364,12 +399,16 @@ class _$_Loaded implements _Loaded {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_Loaded &&
-            const DeepCollectionEquality().equals(other._movies, _movies));
+            const DeepCollectionEquality()
+                .equals(other._allMovies, _allMovies) &&
+            const DeepCollectionEquality().equals(other._byGenres, _byGenres));
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(_movies));
+  int get hashCode => Object.hash(
+      runtimeType,
+      const DeepCollectionEquality().hash(_allMovies),
+      const DeepCollectionEquality().hash(_byGenres));
 
   @JsonKey(ignore: true)
   @override
@@ -382,10 +421,12 @@ class _$_Loaded implements _Loaded {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(List<MovieEntity> movies) loaded,
+    required TResult Function(List<MovieEntity> allMovies,
+            Map<String, List<MovieEntity>> byGenres)
+        loaded,
     required TResult Function(DioException exception) error,
   }) {
-    return loaded(movies);
+    return loaded(allMovies, byGenres);
   }
 
   @override
@@ -393,10 +434,12 @@ class _$_Loaded implements _Loaded {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(List<MovieEntity> movies)? loaded,
+    TResult? Function(List<MovieEntity> allMovies,
+            Map<String, List<MovieEntity>> byGenres)?
+        loaded,
     TResult? Function(DioException exception)? error,
   }) {
-    return loaded?.call(movies);
+    return loaded?.call(allMovies, byGenres);
   }
 
   @override
@@ -404,12 +447,14 @@ class _$_Loaded implements _Loaded {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(List<MovieEntity> movies)? loaded,
+    TResult Function(List<MovieEntity> allMovies,
+            Map<String, List<MovieEntity>> byGenres)?
+        loaded,
     TResult Function(DioException exception)? error,
     required TResult orElse(),
   }) {
     if (loaded != null) {
-      return loaded(movies);
+      return loaded(allMovies, byGenres);
     }
     return orElse();
   }
@@ -453,9 +498,11 @@ class _$_Loaded implements _Loaded {
 }
 
 abstract class _Loaded implements MoviesListState {
-  const factory _Loaded(final List<MovieEntity> movies) = _$_Loaded;
+  const factory _Loaded(final List<MovieEntity> allMovies,
+      final Map<String, List<MovieEntity>> byGenres) = _$_Loaded;
 
-  List<MovieEntity> get movies;
+  List<MovieEntity> get allMovies;
+  Map<String, List<MovieEntity>> get byGenres;
   @JsonKey(ignore: true)
   _$$_LoadedCopyWith<_$_Loaded> get copyWith =>
       throw _privateConstructorUsedError;
@@ -528,7 +575,9 @@ class _$_Exception implements _Exception {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(List<MovieEntity> movies) loaded,
+    required TResult Function(List<MovieEntity> allMovies,
+            Map<String, List<MovieEntity>> byGenres)
+        loaded,
     required TResult Function(DioException exception) error,
   }) {
     return error(exception);
@@ -539,7 +588,9 @@ class _$_Exception implements _Exception {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(List<MovieEntity> movies)? loaded,
+    TResult? Function(List<MovieEntity> allMovies,
+            Map<String, List<MovieEntity>> byGenres)?
+        loaded,
     TResult? Function(DioException exception)? error,
   }) {
     return error?.call(exception);
@@ -550,7 +601,9 @@ class _$_Exception implements _Exception {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(List<MovieEntity> movies)? loaded,
+    TResult Function(List<MovieEntity> allMovies,
+            Map<String, List<MovieEntity>> byGenres)?
+        loaded,
     TResult Function(DioException exception)? error,
     required TResult orElse(),
   }) {

@@ -1,3 +1,4 @@
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:eden_movies_app/src/config/theme/colors.dart';
 import 'package:eden_movies_app/src/config/theme/text_styles.dart';
 import 'package:eden_movies_app/src/core/utils/app_spacing.dart';
@@ -7,7 +8,7 @@ import 'package:flutter/material.dart';
 const _imageRatio = 500 / 330;
 
 enum CarouselSize {
-  small(250),
+  small(300),
   big(400);
 
   const CarouselSize(this.height);
@@ -20,21 +21,35 @@ class CarouselWidget extends StatelessWidget {
     super.key,
     required this.movies,
     this.size = CarouselSize.big,
+    this.title,
   });
 
   final List<MovieEntity> movies;
   final CarouselSize size;
+  final String? title;
 
   @override
   Widget build(BuildContext context) => Padding(
-        padding: const EdgeInsets.symmetric(vertical: 12.0),
+        padding: const EdgeInsets.symmetric(vertical: AppSpacing.spacing12),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
+            if (title != null)
+              Padding(
+                padding: const EdgeInsets.symmetric(
+                  horizontal: AppSpacing.spacing16,
+                  vertical: AppSpacing.spacing4,
+                ),
+                child: Text(
+                  title!,
+                  style: AppTextStyles.movieSetTitleTextStyle,
+                ),
+              ),
             SizedBox(
               height: size.height,
               child: ListView.separated(
-                separatorBuilder: (context, _) => const SizedBox(width: 6),
+                separatorBuilder: (context, _) =>
+                    const SizedBox(width: AppSpacing.spacing8),
                 scrollDirection: Axis.horizontal,
                 itemCount: movies.length,
                 itemBuilder: (context, index) {
@@ -44,6 +59,7 @@ class CarouselWidget extends StatelessWidget {
                     child: _CarouselItem(
                       title: movie.title,
                       posterUrl: movie.posterUrl,
+                      size: size,
                     ),
                   );
                 },
@@ -55,9 +71,9 @@ class CarouselWidget extends StatelessWidget {
 
   EdgeInsets _getMargin(int index, int lastIndex) {
     if (index == 0) {
-      return const EdgeInsets.only(left: 6);
+      return const EdgeInsets.only(left: AppSpacing.spacing8);
     } else if (index == lastIndex - 1) {
-      return const EdgeInsets.only(right: 6);
+      return const EdgeInsets.only(right: AppSpacing.spacing8);
     } else {
       return EdgeInsets.zero;
     }
@@ -106,12 +122,10 @@ class _NoImageMovieItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) => Center(
         child: Padding(
-          padding: const EdgeInsets.symmetric(
-            horizontal: AppSpacing.spacing12,
-            vertical: AppSpacing.spacing8,
-          ),
-          child: Text(
+          padding: const EdgeInsets.all(AppSpacing.spacing12),
+          child: AutoSizeText(
             title,
+            maxLines: 2,
             style: AppTextStyles.movieCoverTitleTextStyle,
           ),
         ),

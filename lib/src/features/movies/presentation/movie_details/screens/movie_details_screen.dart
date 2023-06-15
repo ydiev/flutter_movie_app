@@ -33,8 +33,7 @@ class MovieDetailsScreen extends StatelessWidget {
               ),
             ),
             Positioned.fill(
-              bottom: MediaQuery.of(context).size.height / 4,
-              // child: _Title(title: movie.title),
+              bottom: MediaQuery.of(context).size.height / 3.5,
               child: MovieTitleWidget(title: movie.title),
             ),
             Positioned.fill(
@@ -62,7 +61,11 @@ class _Cover extends StatelessWidget {
           posterUrl ?? '',
           alignment: Alignment.topCenter,
           fit: BoxFit.cover,
-          errorBuilder: (context, _, __) => const SizedBox(),
+          errorBuilder: (context, _, __) => Container(
+            padding:
+                EdgeInsets.only(top: MediaQuery.of(context).size.height / 5),
+            color: AppColors.accentColor,
+          ),
           color: AppColors.appBarBackground.withOpacity(0.3),
           colorBlendMode: BlendMode.darken,
         ),

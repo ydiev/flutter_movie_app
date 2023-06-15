@@ -1,9 +1,8 @@
-import 'package:auto_size_text/auto_size_text.dart';
 import 'package:eden_movies_app/src/config/routing/app_router.dart';
 import 'package:eden_movies_app/src/config/theme/app_colors.dart';
-import 'package:eden_movies_app/src/config/theme/text_styles.dart';
 import 'package:eden_movies_app/src/core/utils/app_spacing.dart';
 import 'package:eden_movies_app/src/features/movies/domain/entities/movie_entity.dart';
+import 'package:eden_movies_app/src/features/movies/presentation/common_widgets/movie_title_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
@@ -99,7 +98,7 @@ class _Item extends StatelessWidget {
           height: size.height,
           width: size.height / _imageRatio,
           decoration: BoxDecoration(
-            color: AppColors.accentColor,
+            // color: AppColors.accentColor,
             borderRadius: BorderRadius.circular(AppSpacing.spacing12),
           ),
           child: ClipRRect(
@@ -126,14 +125,10 @@ class _NoImageItem extends StatelessWidget {
   final String title;
 
   @override
-  Widget build(BuildContext context) => Center(
-        child: Padding(
-          padding: const EdgeInsets.all(AppSpacing.spacing12),
-          child: AutoSizeText(
-            title,
-            maxLines: 2,
-            style: AppTextStyles.movieCoverTitleTextStyle,
-          ),
+  Widget build(BuildContext context) => Container(
+        decoration: const BoxDecoration(
+          color: AppColors.accentColor,
         ),
+        child: MovieTitleWidget(title: title),
       );
 }

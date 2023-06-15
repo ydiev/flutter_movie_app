@@ -11,10 +11,12 @@ class MovieTitleWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) => Center(
-        child: Text(
-          title,
-          textAlign: TextAlign.center,
+        child: DefaultTextStyle(
           style: AppTextStyles.movieCoverTitleTextStyle,
+          child: Text(
+            title,
+            textAlign: TextAlign.center,
+          ),
         ),
       );
 }

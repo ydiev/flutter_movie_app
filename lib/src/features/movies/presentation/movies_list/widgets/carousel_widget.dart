@@ -1,9 +1,11 @@
 import 'package:auto_size_text/auto_size_text.dart';
-import 'package:eden_movies_app/src/config/theme/colors.dart';
+import 'package:eden_movies_app/src/config/routing/app_router.dart';
+import 'package:eden_movies_app/src/config/theme/app_colors.dart';
 import 'package:eden_movies_app/src/config/theme/text_styles.dart';
 import 'package:eden_movies_app/src/core/utils/app_spacing.dart';
 import 'package:eden_movies_app/src/features/movies/domain/entities/movie_entity.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
 const _imageRatio = 500 / 330;
 
@@ -44,6 +46,7 @@ class CarouselWidget extends StatelessWidget {
             size: size,
             isFirst: index == 0,
             isLast: index == itemsCount,
+            onTap: () => context.goNamed(AppRoute.movie.name, extra: movie),
           );
         },
       ),
@@ -58,6 +61,7 @@ class _Item extends StatelessWidget {
     this.size = CarouselSize.big,
     this.isFirst = false,
     this.isLast = false,
+    this.onTap,
   });
 
   final String title;
@@ -65,29 +69,33 @@ class _Item extends StatelessWidget {
   final CarouselSize size;
   final bool isFirst;
   final bool isLast;
+  final GestureTapCallback? onTap;
 
   @override
-  Widget build(BuildContext context) => Container(
-        margin: [
-          if (isFirst) const EdgeInsets.only(left: AppSpacing.spacing8),
-          if (isLast) const EdgeInsets.only(right: AppSpacing.spacing8),
-          EdgeInsets.zero
-        ].first,
-        height: size.height,
-        width: size.height / _imageRatio,
-        decoration: BoxDecoration(
-          color: AppColors.accentColor,
-          borderRadius: BorderRadius.circular(AppSpacing.spacing12),
-        ),
-        child: ClipRRect(
-          borderRadius: BorderRadius.circular(AppSpacing.spacing12),
-          child: Image.network(
-            posterUrl ?? '',
-            fit: BoxFit.cover,
-            errorBuilder: (context, error, _) => _NoImageItem(title: title),
-            loadingBuilder: (context, child, progress) =>
-                progress == null ? child : const LinearProgressIndicator(),
-            semanticLabel: title,
+  Widget build(BuildContext context) => GestureDetector(
+        onTap: onTap,
+        child: Container(
+          margin: [
+            if (isFirst) const EdgeInsets.only(left: AppSpacing.spacing8),
+            if (isLast) const EdgeInsets.only(right: AppSpacing.spacing8),
+            EdgeInsets.zero
+          ].first,
+          height: size.height,
+          width: size.height / _imageRatio,
+          decoration: BoxDecoration(
+            color: AppColors.accentColor,
+            borderRadius: BorderRadius.circular(AppSpacing.spacing12),
+          ),
+          child: ClipRRect(
+            borderRadius: BorderRadius.circular(AppSpacing.spacing12),
+            child: Image.network(
+              posterUrl ?? '',
+              fit: BoxFit.cover,
+              errorBuilder: (context, error, _) => _NoImageItem(title: title),
+              loadingBuilder: (context, child, progress) =>
+                  progress == null ? child : const LinearProgressIndicator(),
+              semanticLabel: title,
+            ),
           ),
         ),
       );

@@ -1,6 +1,6 @@
+import 'package:eden_movies_app/src/config/widgets/app_bar.dart';
 import 'package:eden_movies_app/src/config/widgets/error_message_widget.dart';
 import 'package:eden_movies_app/src/core/utils/localization.dart';
-import 'package:eden_movies_app/src/config/widgets/app_navigation_bar.dart';
 import 'package:eden_movies_app/src/dependency_register.dart';
 import 'package:eden_movies_app/src/features/movies/presentation/movies_list/bloc/movies_list_cubit.dart';
 import 'package:eden_movies_app/src/features/movies/presentation/movies_list/widgets/movie_collection_widget.dart';
@@ -13,7 +13,8 @@ class MoviesListScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) => Scaffold(
-        bottomNavigationBar: appNavigationBar,
+        appBar: appBar(context),
+        // bottomNavigationBar: appNavigationBar(context),
         body: AnnotatedRegion<SystemUiOverlayStyle>(
           value: SystemUiOverlayStyle.light,
           child: SafeArea(
@@ -38,7 +39,7 @@ class MoviesListScreen extends StatelessWidget {
                     ],
                   ),
                   error: (error) => ErrorMessageWidget(
-                    error.message ?? Localization.defaultErrorMessage,
+                    error.message ?? AppLocalization.defaultErrorMessage,
                   ),
                 ),
               ),

@@ -1,6 +1,7 @@
 import 'package:eden_movies_app/src/config/theme/text_styles.dart';
 import 'package:eden_movies_app/src/core/utils/app_spacing.dart';
 import 'package:eden_movies_app/src/features/movies/domain/entities/movie_entity.dart';
+import 'package:eden_movies_app/src/features/movies/presentation/common_widgets/movie_title_widget.dart';
 import 'package:eden_movies_app/src/features/movies/presentation/movies_list/widgets/carousel_widget.dart';
 import 'package:flutter/material.dart';
 
@@ -22,32 +23,12 @@ class MovieCollectionWidget extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            if (title != null) _Title(title: title!),
+            if (title != null) MovieTitleWidget(title: title!),
             CarouselWidget(
               movies: movies,
               size: isMain ? CarouselSize.big : CarouselSize.small,
             ),
           ],
-        ),
-      );
-}
-
-class _Title extends StatelessWidget {
-  const _Title({
-    required this.title,
-  });
-
-  final String title;
-
-  @override
-  Widget build(BuildContext context) => Padding(
-        padding: const EdgeInsets.symmetric(
-          horizontal: AppSpacing.spacing16,
-          vertical: AppSpacing.spacing4,
-        ),
-        child: Text(
-          title,
-          style: AppTextStyles.movieSetTitleTextStyle,
         ),
       );
 }

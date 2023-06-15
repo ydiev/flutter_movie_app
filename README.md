@@ -1,6 +1,6 @@
-# eden_movies_app
+# flutter_movie_app
 
-A new Flutter project.
+An example Flutter movie app
 
 ## Getting Started
 

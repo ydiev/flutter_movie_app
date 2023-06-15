@@ -47,13 +47,16 @@ class _Cover extends StatelessWidget {
   final String? posterUrl;
 
   @override
-  Widget build(BuildContext context) => Image.network(
-        posterUrl ?? '',
-        alignment: Alignment.topCenter,
-        fit: BoxFit.cover,
-        errorBuilder: (context, _, __) => const SizedBox(),
-        color: AppColors.appBarBackground.withOpacity(0.3),
-        colorBlendMode: BlendMode.darken,
+  Widget build(BuildContext context) => Hero(
+        tag: posterUrl ?? 'dash',
+        child: Image.network(
+          posterUrl ?? '',
+          alignment: Alignment.topCenter,
+          fit: BoxFit.cover,
+          errorBuilder: (context, _, __) => const SizedBox(),
+          color: AppColors.appBarBackground.withOpacity(0.3),
+          colorBlendMode: BlendMode.darken,
+        ),
       );
 }
 

@@ -88,13 +88,16 @@ class _Item extends StatelessWidget {
           ),
           child: ClipRRect(
             borderRadius: BorderRadius.circular(AppSpacing.spacing12),
-            child: Image.network(
-              posterUrl ?? '',
-              fit: BoxFit.cover,
-              errorBuilder: (context, error, _) => _NoImageItem(title: title),
-              loadingBuilder: (context, child, progress) =>
-                  progress == null ? child : const LinearProgressIndicator(),
-              semanticLabel: title,
+            child: Hero(
+              tag: posterUrl ?? 'dash',
+              child: Image.network(
+                posterUrl ?? '',
+                fit: BoxFit.cover,
+                errorBuilder: (context, error, _) => _NoImageItem(title: title),
+                loadingBuilder: (context, child, progress) =>
+                    progress == null ? child : const LinearProgressIndicator(),
+                semanticLabel: title,
+              ),
             ),
           ),
         ),

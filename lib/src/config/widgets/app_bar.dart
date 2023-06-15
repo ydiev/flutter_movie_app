@@ -1,3 +1,4 @@
+import 'package:eden_movies_app/src/config/widgets/app_logo_widget.dart';
 import 'package:eden_movies_app/src/core/utils/app_spacing.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
@@ -5,7 +6,10 @@ import 'package:go_router/go_router.dart';
 AppBar appBar(BuildContext context) => AppBar(
       leading:
           context.canPop() ? _backButton(onTap: () => context.pop()) : null,
-      // title: const Text('Movie App'),
+      title: const Hero(
+        tag: 'logo',
+        child: AppLogoWidget(),
+      ),
     );
 
 AppBar detailsScreenAppBar(BuildContext context) => AppBar(

@@ -23,10 +23,12 @@ class CarouselWidget extends StatelessWidget {
     super.key,
     required this.movies,
     this.size = CarouselSize.big,
+    this.genre,
   });
 
   final List<MovieEntity> movies;
   final CarouselSize size;
+  final String? genre;
 
   @override
   Widget build(BuildContext context) {
@@ -42,11 +44,23 @@ class CarouselWidget extends StatelessWidget {
           final movie = movies[index];
           return _Item(
             title: movie.title,
+            genre: genre ?? '',
             posterUrl: movie.posterUrl,
             size: size,
             isFirst: index == 0,
             isLast: index == itemsCount,
-            onTap: () => context.goNamed(AppRoute.movie.name, extra: movie),
+            onTap: () => context.goNamed(
+              AppRoute.movie.name,
+              extra: MovieDetailsScreenParams(
+                movie: movie,
+                section: genre,
+              ),
+            ),
+            // onTap: () => Navigator.of(context).push(
+            //   MaterialPageRoute<void>(
+            //     builder: (context) => MovieDetailsScreen(movie: movie),
+            //   ),
+            // ),
           );
         },
       ),
@@ -57,6 +71,7 @@ class CarouselWidget extends StatelessWidget {
 class _Item extends StatelessWidget {
   const _Item({
     required this.title,
+    required this.genre,
     this.posterUrl,
     this.size = CarouselSize.big,
     this.isFirst = false,
@@ -66,6 +81,7 @@ class _Item extends StatelessWidget {
 
   final String title;
   final String? posterUrl;
+  final String genre;
   final CarouselSize size;
   final bool isFirst;
   final bool isLast;
@@ -89,7 +105,7 @@ class _Item extends StatelessWidget {
           child: ClipRRect(
             borderRadius: BorderRadius.circular(AppSpacing.spacing12),
             child: Hero(
-              tag: posterUrl ?? 'dash',
+              tag: "$genre$posterUrl",
               child: Image.network(
                 posterUrl ?? '',
                 fit: BoxFit.cover,

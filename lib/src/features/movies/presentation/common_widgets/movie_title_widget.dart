@@ -1,5 +1,4 @@
 import 'package:eden_movies_app/src/config/theme/text_styles.dart';
-import 'package:eden_movies_app/src/core/utils/app_spacing.dart';
 import 'package:flutter/material.dart';
 
 class MovieTitleWidget extends StatelessWidget {

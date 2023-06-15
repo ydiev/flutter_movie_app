@@ -18,6 +18,12 @@ class AppTextStyles {
     fontSize: 14,
     color: AppColors.textColor,
   );
+  static const genreTitleTextStyle = TextStyle(
+    fontSize: 30,
+    fontWeight: FontWeight.bold,
+    fontStyle: FontStyle.normal,
+    color: AppColors.textColor,
+  );
   static const movieCoverTitleTextStyle = TextStyle(
     fontSize: 30,
     fontWeight: FontWeight.bold,

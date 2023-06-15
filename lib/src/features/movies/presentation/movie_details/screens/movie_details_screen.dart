@@ -9,13 +9,15 @@ import 'package:eden_movies_app/src/features/movies/domain/entities/movie_entity
 import 'package:eden_movies_app/src/features/movies/presentation/common_widgets/movie_title_widget.dart';
 import 'package:flutter/material.dart';
 
-class MovieDetails extends StatelessWidget {
-  const MovieDetails({
+class MovieDetailsScreen extends StatelessWidget {
+  const MovieDetailsScreen({
     super.key,
     required this.movie,
+    this.section,
   });
 
   final MovieEntity movie;
+  final String? section;
 
   @override
   Widget build(BuildContext context) => Scaffold(
@@ -25,7 +27,10 @@ class MovieDetails extends StatelessWidget {
           children: <Widget>[
             Positioned.fill(
               bottom: MediaQuery.of(context).size.height / 2,
-              child: _Cover(posterUrl: movie.posterUrl),
+              child: _Cover(
+                selectedFromGenre: section ?? '',
+                posterUrl: movie.posterUrl,
+              ),
             ),
             Positioned.fill(
               bottom: MediaQuery.of(context).size.height / 4,
@@ -42,13 +47,17 @@ class MovieDetails extends StatelessWidget {
 }
 
 class _Cover extends StatelessWidget {
-  const _Cover({this.posterUrl});
+  const _Cover({
+    required this.selectedFromGenre,
+    this.posterUrl,
+  });
 
+  final String selectedFromGenre;
   final String? posterUrl;
 
   @override
   Widget build(BuildContext context) => Hero(
-        tag: posterUrl ?? 'dash',
+        tag: '$selectedFromGenre$posterUrl',
         child: Image.network(
           posterUrl ?? '',
           alignment: Alignment.topCenter,

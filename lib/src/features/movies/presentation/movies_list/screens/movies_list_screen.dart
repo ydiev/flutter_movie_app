@@ -32,7 +32,7 @@ class MoviesListScreen extends StatelessWidget {
                       ),
                       ...moviesByGenre.entries.map(
                         (entry) => MovieCollectionWidget(
-                          title: entry.key,
+                          genre: entry.key,
                           movies: entry.value,
                         ),
                       ),
